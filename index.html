@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RASHADOOZ OS</title>
+<meta name="description" content="نظام تشغيل x86 صغير وسريع مكتوب من الصفر بلغة C والأسمبلي. حمّل الـ ISO وجرّبه في QEMU. / A small, fast x86 operating system written from scratch in C and assembly.">
+<meta property="og:title" content="RASHADOOZ OS">
+<meta property="og:description" content="A small x86 operating system written from scratch. Download the ISO and boot it.">
+<meta property="og:image" content="assets/og.png">
+<meta name="theme-color" content="#090c11">
+<link rel="icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="assets/logo.png" alt=""><span>RASHADOOZ OS</span></a>
+    <nav>
+      <a class="hide-s" href="#features"><span data-l="ar">المميزات</span><span data-l="en">Features</span></a>
+      <a class="hide-s" href="#try"><span data-l="ar">جرّبه</span><span data-l="en">Try it</span></a>
+      <a class="hide-s" href="#roadmap"><span data-l="ar">الخطة</span><span data-l="en">Roadmap</span></a>
+      <a href="#" data-repo-link><span>GitHub</span></a>
+    </nav>
+    <button class="lang" id="lang" type="button" aria-label="Language">English</button>
+  </div>
+</header>
+
+<main id="top">
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <h1>
+        <span data-l="ar">نظام تشغيل صغير، مكتوب من الصفر.</span>
+        <span data-l="en">A small operating system, built from zero.</span>
+      </h1>
+      <p class="lead">
+        <span data-l="ar">نواة x86 بحجم 46 كيلوبايت تقريباً، فيها تعدد مهام، وذاكرة افتراضية، ونظام ملفات، و shell، ولعبتين. هدفنا إنه يشتغل بسرعة على الأجهزة القديمة.</span>
+        <span data-l="en">A 46 KB x86 kernel with multitasking, virtual memory, a file system, a shell and two games. The goal: run fast on old hardware.</span>
+      </p>
+      <a class="dl" href="#" data-iso-link>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 20h16"/></svg>
+        <span data-l="ar">حمّل ملف ISO</span><span data-l="en">Download the ISO</span>
+      </a>
+      <div class="dl-meta">
+        <span data-l="ar">الإصدار <b id="ver">0.1.0 beta</b></span><span data-l="en">Version <b class="ver2">0.1.0 beta</b></span>
+        <span data-l="ar">تجريبي، مجرّب على QEMU</span><span data-l="en">Beta, tested on QEMU</span>
+        <a href="#" data-releases-link><span data-l="ar">كل الإصدارات</span><span data-l="en">All releases</span></a>
+      </div>
+    </div>
+
+    <div>
+      <div class="term" role="img" aria-label="Terminal showing the info command output of RASHADOOZ OS">
+        <div class="term-bar"><span>rashadooz</span><span>80x25</span></div>
+<pre id="term"><span class="p">rashadooz</span><span class="w">&gt; </span>info
+
+<span class="b">  _______________</span>     <span class="w">RASHADOOZ OS </span><span class="p">0.1.0(beta)</span>
+<span class="b"> |  ___________  |</span>    <span class="g">------------------------------</span>
+<span class="b"> | |           | |</span>    <span class="c">Kernel     </span>: i386, higher half
+<span class="b"> | | RASHADOOZ | |</span>    <span class="c">CPU        </span>: QEMU Virtual CPU version 2.5+
+<span class="b"> | |    O S    | |</span>    <span class="c">Memory     </span>: 9 MB used / 127 MB
+<span class="b"> | |___________| |</span>    <span class="c">Kernel size</span>: 46 KB
+<span class="b"> |_______________|</span>    <span class="c">Uptime     </span>: 0h 00m 42s
+<span class="b">    /_________\</span>       <span class="c">Processes  </span>: 2 running, preemptive scheduler
+<span class="b"></span>                      <span class="c">File system</span>: RFS, 15 objects (read-only)
+<span class="b"></span>                      <span class="c">Display    </span>: VGA text 80x25
+<span class="b"></span>                      <span class="c">Timer      </span>: 100 Hz PIT, 4 KB pages
+
+<span class="p">rashadooz</span><span class="w">&gt; </span><span class="cur"></span></pre>
+      </div>
+      <p class="dl-meta" style="margin-top:14px"><span data-l="ar">خرج حقيقي لأمر info (مثال من QEMU).</span><span data-l="en">Real output of the info command (sample from QEMU).</span></p>
+    </div>
+  </div>
+</div>
+
+<section id="features">
+  <div class="wrap">
+    <h2><span data-l="ar">اللي جوّه النظام</span><span data-l="en">What's inside</span></h2>
+    <p class="sub"><span data-l="ar">كل جزء كتبناه بإيدينا خطوة خطوة، ومفيش مكتبات جاهزة. تقدر تقرا الكود كله وتفهمه.</span><span data-l="en">Every part was written by hand, step by step, with no ready-made libraries. You can read all of it.</span></p>
+    <div class="feat">
+      <div><h3><span data-l="ar">تعدد مهام</span><span data-l="en">Multitasking</span></h3><p><span data-l="ar">جدولة round-robin، وعمليات في وضع المستخدم بذاكرة معزولة، وfork وexec.</span><span data-l="en">Preemptive round-robin scheduler, isolated user-mode processes, fork and exec.</span></p></div>
+      <div><h3><span data-l="ar">ذاكرة افتراضية</span><span data-l="en">Virtual memory</span></h3><p><span data-l="ar">paging بصفحات 4 كيلوبايت، ونواة في النص العالي، وheap للنواة.</span><span data-l="en">4 KB paging, a higher-half kernel and a kernel heap.</span></p></div>
+      <div><h3><span data-l="ar">نظام ملفات</span><span data-l="en">File system</span></h3><p><span data-l="ar">نظام RFS للقراءة فقط بيتحمّل مع الإقلاع، وأمر ls لاستعراضه.</span><span data-l="en">A read-only RFS image loaded at boot, browsable with ls.</span></p></div>
+      <div><h3>Shell</h3><p><span data-l="ar">أوامر help وversion وinfo وls وclear، وتشغيل أي برنامج من /bin بالاسم. والـ backspace شغال صح.</span><span data-l="en">help, version, info, ls and clear, plus any program in /bin by name. Backspace works as it should.</span></p></div>
+      <div><h3><span data-l="ar">لعبة Snake</span><span data-l="en">Snake</span></h3><p><span data-l="ar">لعبة الثعبان بتصميم صاحب النظام، شغالة جوه النظام نفسه.</span><span data-l="en">The classic snake game, running inside the OS.</span></p></div>
+      <div><h3><span data-l="ar">لعبة Tetris</span><span data-l="en">Tetris</span></h3><p><span data-l="ar">بقطع ملوّنة وظل للقطعة ومستويات متزايدة السرعة.</span><span data-l="en">Coloured pieces, a ghost piece and increasing levels.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section id="try" class="bios">
+  <div class="wrap">
+    <h2><span data-l="ar">جرّبه في 3 خطوات</span><span data-l="en">Try it in 3 steps</span></h2>
+    <p class="sub"><span data-l="ar">أسهل طريقة هي QEMU، وهو مجاني ومتاح على Linux وWindows وmacOS.</span><span data-l="en">The easiest way is QEMU, which is free on Linux, Windows and macOS.</span></p>
+    <ol class="steps">
+      <li><div><h3><span data-l="ar">حمّل الملف</span><span data-l="en">Download the file</span></h3><p><span data-l="ar">اضغط زر التحميل فوق، وهتاخد ملف rashadooz.iso.</span><span data-l="en">Use the download button above to get rashadooz.iso.</span></p></div></li>
+      <li><div><h3><span data-l="ar">شغّله في QEMU</span><span data-l="en">Boot it in QEMU</span></h3><p><span data-l="ar">من الـ terminal في فولدر التحميل:</span><span data-l="en">From a terminal in the download folder:</span></p><code class="cmd">qemu-system-i386 -cdrom rashadooz.iso</code></div></li>
+      <li><div><h3><span data-l="ar">جرّب الأوامر</span><span data-l="en">Try the commands</span></h3><p><span data-l="ar">اكتب help عشان تشوف الأوامر، وبعدها snake أو tetris.</span><span data-l="en">Type help to see the commands, then snake or tetris.</span></p></div></li>
+    </ol>
+    <p class="note"><span data-l="ar">النظام لسه تجريبي. لو هتجرّبه على جهاز حقيقي، استخدم جهاز تقدر تتحمل تجربته، وابدأ بـ CD أو USB. ولا تحطه على قرص فيه بيانات مهمة.</span><span data-l="en">The system is still experimental. If you try real hardware, use a machine you can afford to experiment on, and boot from a CD or USB. Never install it on a disk that holds data you care about.</span></p>
+  </div>
+</section>
+
+<section id="roadmap">
+  <div class="wrap">
+    <h2><span data-l="ar">إحنا رايحين فين</span><span data-l="en">Where this is going</span></h2>
+    <p class="sub"><span data-l="ar">الهدف إن النظام يبقى مفيد للناس اللي عندها أجهزة قديمة، بواجهة رسومية بسيطة وسريعة.</span><span data-l="en">The goal is a useful system for people with old computers, with a simple, fast graphical interface.</span></p>
+    <div class="road">
+      <div class="row done"><span class="tag">[ done ]</span><div><h3><span data-l="ar">النواة والـ shell</span><span data-l="en">Kernel and shell</span></h3><p><span data-l="ar">إقلاع، ذاكرة، مهام، نظام ملفات، shell، لعبتين.</span><span data-l="en">Boot, memory, tasks, file system, shell, two games.</span></p></div></div>
+      <div class="row now"><span class="tag">[ now ]</span><div><h3><span data-l="ar">الشغل على جهاز حقيقي</span><span data-l="en">Real hardware</span></h3><p><span data-l="ar">إقلاع من USB وCD، شاشة أخطاء واضحة، كيبورد وماوس PS/2.</span><span data-l="en">USB and CD boot, a clear crash screen, PS/2 keyboard and mouse.</span></p></div></div>
+      <div class="row next"><span class="tag">[ next ]</span><div><h3><span data-l="ar">تخزين</span><span data-l="en">Storage</span></h3><p><span data-l="ar">تعريف القرص الصلب ونظام ملفات تقدر تكتب عليه.</span><span data-l="en">A disk driver and a writable file system.</span></p></div></div>
+      <div class="row next"><span class="tag">[ next ]</span><div><h3><span data-l="ar">واجهة رسومية</span><span data-l="en">Graphical interface</span></h3><p><span data-l="ar">نوافذ وسطح مكتب وتطبيقات أساسية.</span><span data-l="en">Windows, a desktop and basic apps.</span></p></div></div>
+      <div class="row next"><span class="tag">[ later ]</span><div><h3><span data-l="ar">ألعاب ومحاكيات</span><span data-l="en">Games and emulators</span></h3><p><span data-l="ar">محاكي Game Boy بعد ما الواجهة تخلص.</span><span data-l="en">A Game Boy emulator once the interface is done.</span></p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="community">
+  <div class="wrap">
+    <h2><span data-l="ar">شاركنا</span><span data-l="en">Join in</span></h2>
+    <p class="sub"><span data-l="ar">جرّبت النظام وطلعلك مشكلة؟ أو عندك فكرة؟ قولنا. كل ملاحظة بتفرق، والمشروع مفتوح لأي حد يحب يتعلم أو يساهم.</span><span data-l="en">Tried it and hit a problem? Have an idea? Tell us. Every report helps, and the project is open to anyone who wants to learn or contribute.</span></p>
+    <div class="join">
+      <a class="btn" href="#" data-issues-link><span data-l="ar">ابلّغ عن مشكلة</span><span data-l="en">Report a problem</span></a>
+      <a class="btn" href="#" data-discuss-link><span data-l="ar">ناقش وشارك أفكارك</span><span data-l="en">Discuss and share ideas</span></a>
+      <a class="btn" href="#" data-repo-link><span data-l="ar">الكود المصدري</span><span data-l="en">Source code</span></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/logo.png" alt="RASHADOOZ OS">
+    <div class="grow">
+      <span data-l="ar">RASHADOOZ OS مشروع تعليمي مفتوح المصدر. بُني بالتوازي مع كتاب The Little OS Book، ثم اتوسّع عليه.</span>
+      <span data-l="en">RASHADOOZ OS is an open-source learning project, built alongside The Little OS Book and extended from there.</span>
+      <br>
+      <span data-l="ar">ملف ISO بيحتوي على GRUB Legacy (رخصة GPL). كود GRUB المصدري متاح من موقعه الرسمي.</span>
+      <span data-l="en">The ISO contains GRUB Legacy (GPL). GRUB's source code is available from its official project.</span>
+    </div>
+    <span class="mono" style="font-size:20px">v<span class="ver2">0.1.0 beta</span></span>
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
