@@ -1,5 +1,5 @@
 window.RASHADOOZ = {
-  repo: "YOUR_GITHUB_USERNAME/rashadooz-os",
-  isoName: "rashadooz.iso",
+  repo: "omar-rashadooz/rashadooz-os",
+  isoUrl: "https://github.com/omar-rashadooz/rashadooz-os/raw/main/rashadooz.iso",
   version: "0.1.0 beta"
 };

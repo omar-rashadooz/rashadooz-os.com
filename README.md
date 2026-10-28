@@ -8,11 +8,9 @@ Static site (HTML, CSS, one small JS file). No build step.
 3. Settings > Pages > Deploy from a branch > `main`, folder `/ (root)` or `/docs`.
 4. Open `config.js` and replace `YOUR_GITHUB_USERNAME/rashadooz-os` with your real repository.
 
-## Publish the ISO
-Do not commit the ISO into the repository. Use Releases:
-1. Repository > Releases > Draft a new release, tag `v0.1.0`.
-2. Attach `rashadooz.iso` (the file name must match `isoName` in `config.js`).
-3. The download button points to `/releases/latest/download/rashadooz.iso`, so it always serves the newest release.
+## The ISO
+The download button points to `rashadooz.iso` at the root of the `main` branch (`isoUrl` in `config.js`).
+To ship a new version, commit a new `rashadooz.iso` with the same name. GitHub blocks files over 100 MB; if the ISO grows past that, switch to Releases.
 
 ## Before publishing
 - Add a LICENSE file to the repository (your choice of license).

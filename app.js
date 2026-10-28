@@ -3,8 +3,8 @@
   var repo = "https://github.com/" + cfg.repo;
   function each(sel, fn) { Array.prototype.forEach.call(document.querySelectorAll(sel), fn); }
 
-  each("[data-iso-link]", function (a) { a.href = repo + "/releases/latest/download/" + cfg.isoName; });
-  each("[data-releases-link]", function (a) { a.href = repo + "/releases"; });
+  each("[data-iso-link]", function (a) { a.href = cfg.isoUrl; });
+  each("[data-releases-link]", function (a) { a.href = repo + "/commits/main/rashadooz.iso"; });
   each("[data-issues-link]", function (a) { a.href = repo + "/issues"; });
   each("[data-discuss-link]", function (a) { a.href = repo + "/discussions"; });
   each("[data-repo-link]", function (a) { a.href = repo; });
